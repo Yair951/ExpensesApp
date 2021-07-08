@@ -3,6 +3,7 @@ import { IExpenses } from "../../Interfaces/ExpenseInterface";
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
+import ExpensesChart from "./ExpensesChart";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
 
@@ -29,6 +30,7 @@ const Expenses: React.FC<IProps> = (props: IProps) => {
           onChangedExpense={handleExpenseChanged}
           filteredYear={filteredYear}
         />
+        <ExpensesChart expenses={filterItemsByYear} />
         <ExpensesList item={filterItemsByYear} />
       </Card>
     </div>
