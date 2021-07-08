@@ -4,3 +4,9 @@ export interface IExpenses {
     amount: number;
     date: Date;
 }
+
+export interface IForm {
+    enteredTitle: string;
+    enteredAmount: string;
+    enteredDate: string;
+}

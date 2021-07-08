@@ -1,50 +1,52 @@
 import React, { useState } from "react";
+import { IForm } from "../../Interfaces/ExpenseInterface";
 import "./ExpenseForm.css";
 
-interface IForm {
-  enteredTitle: string;
-  enteredAmount: string;
-  enteredDate: string;
+interface IProps {
+  onSaveExpenseData: Function;
+  adjustExpenseOpen: Function;
 }
 
-const ExpenseForm: React.FC = () => {
+const ExpenseForm: React.FC<IProps> = (props: IProps) => {
+  const { onSaveExpenseData, adjustExpenseOpen } = props;
   const [enteredForm, setEnteredForm] = useState<IForm>({
     enteredTitle: "",
     enteredAmount: "",
     enteredDate: "",
   });
 
-  const titleChangeHandler: Function = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleNewForm: Function = (enteredFormObject: Object): void => {
     setEnteredForm((prevState) => {
-      return { ...prevState, enteredTitle: e.target.value };
+      return { ...prevState, ...enteredFormObject };
     });
   };
-  const amountChangeHandler: Function = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setEnteredForm((prevState) => {
-      return { ...prevState, enteredAmount: e.target.value };
-    });
+
+  const submitHandler: Function = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    onSaveExpenseData(enteredForm);
+    resetForm();
   };
-  const dateChangeHandler: Function = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setEnteredForm((prevState) => {
-      return { ...prevState, enteredDate: e.target.value };
+
+  const resetForm: Function = (): void => {
+    adjustExpenseOpen();
+    setEnteredForm({
+      enteredTitle: "",
+      enteredAmount: "",
+      enteredDate: "",
     });
   };
 
   return (
-    <form action="">
+    <form onSubmit={(e) => submitHandler(e)} onReset={() => resetForm()}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label htmlFor="">Title</label>
           <input
             type="text"
+            value={enteredForm.enteredTitle}
+            required
             onChange={(e) => {
-              titleChangeHandler(e);
+              handleNewForm({ enteredTitle: e.target.value });
             }}
           />
         </div>
@@ -54,8 +56,10 @@ const ExpenseForm: React.FC = () => {
             type="number"
             min="0.01"
             step="0.01"
+            required
+            value={enteredForm.enteredAmount}
             onChange={(e) => {
-              amountChangeHandler(e);
+              handleNewForm({ enteredAmount: e.target.value });
             }}
           />
         </div>
@@ -65,13 +69,16 @@ const ExpenseForm: React.FC = () => {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            required
+            value={enteredForm.enteredDate}
             onChange={(e) => {
-              dateChangeHandler(e);
+              handleNewForm({ enteredDate: e.target.value });
             }}
           />
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="reset">Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
