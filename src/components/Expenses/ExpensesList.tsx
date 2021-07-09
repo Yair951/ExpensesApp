@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { IExpenses } from "../../Interfaces/ExpenseInterface";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpensesList.css";
@@ -13,7 +13,7 @@ const ExpensesList: React.FC<IProps> = (props: IProps) => {
   return (
     <>
       {item.length === 0 ? (
-        <h2 className="expenses-list__fallback">Found no expenses.</h2>
+        <h2 className="expenses-list__fallback">לא נמצאו הוצאות</h2>
       ) : (
         <ul className="expenses-list">
           {item.map((expense) => {

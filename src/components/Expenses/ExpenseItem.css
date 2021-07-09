@@ -37,7 +37,7 @@
   border-radius: 12px;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 600px) {
   .expense-item__description {
     flex-direction: row-reverse;
     align-items: center;

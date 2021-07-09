@@ -35,7 +35,7 @@ const NewExpense: React.FC<IProps> = (props: IProps) => {
         />
       ) : (
         <div>
-          <button onClick={() => adjustExpenseOpen()}>Add New Expense</button>
+          <button onClick={() => adjustExpenseOpen()}>הוסף הוצאה חדשה</button>
         </div>
       )}
     </div>

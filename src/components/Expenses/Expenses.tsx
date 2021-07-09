@@ -1,7 +1,6 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IExpenses } from "../../Interfaces/ExpenseInterface";
 import Card from "../UI/Card";
-import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpensesChart from "./ExpensesChart";
 import ExpensesFilter from "./ExpensesFilter";

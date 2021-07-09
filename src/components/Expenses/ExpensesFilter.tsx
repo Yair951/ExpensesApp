@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ExpensesFilter.css";
 
 interface IProps {
@@ -17,7 +17,7 @@ const ExpensesFilter: React.FC<IProps> = (props: IProps) => {
   return (
     <div className="expenses-filter">
       <div className="expenses-filter__control">
-        <label>Filter by year</label>
+        <label>סנן לפי שנה</label>
         <select value={filteredYear} onChange={(e) => handlechangedOption(e)}>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
