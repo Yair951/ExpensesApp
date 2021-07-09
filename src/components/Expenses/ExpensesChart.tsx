@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { IDataPoints } from "../../Interfaces/DataPointsInterface";
 import { IExpenses } from "../../Interfaces/ExpenseInterface";
 import Chart from "../Chart/Chart";
@@ -17,7 +17,7 @@ const ExpensesChart: React.FC<IProps> = (props: IProps) => {
       chartDataPoints.push({
         label: new Date(2020, i, 1).toLocaleString("he-IL", {
           timeZone: "UTC",
-          month: "long",
+          month: "short",
         }),
         value: 0,
       });

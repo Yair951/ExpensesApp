@@ -2,7 +2,6 @@ import React from "react";
 import Card from "../UI/Card";
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
-import ExpensesList from "./ExpensesList";
 
 interface IProps {
   id: string;

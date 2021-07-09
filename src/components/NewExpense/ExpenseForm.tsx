@@ -40,7 +40,7 @@ const ExpenseForm: React.FC<IProps> = (props: IProps) => {
     <form onSubmit={(e) => submitHandler(e)} onReset={() => resetForm()}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label htmlFor="">Title</label>
+          <label htmlFor="">כותרת</label>
           <input
             type="text"
             value={enteredForm.enteredTitle}
@@ -51,7 +51,7 @@ const ExpenseForm: React.FC<IProps> = (props: IProps) => {
           />
         </div>
         <div className="new-expense__control">
-          <label htmlFor="">Amount</label>
+          <label htmlFor="">מחיר</label>
           <input
             type="number"
             min="0.01"
@@ -64,12 +64,13 @@ const ExpenseForm: React.FC<IProps> = (props: IProps) => {
           />
         </div>
         <div className="new-expense__control">
-          <label htmlFor="">Date</label>
+          <label htmlFor="">תאריך</label>
           <input
             type="date"
             min="2019-01-01"
             max="2022-12-31"
             required
+            pattern="\d{4}-\d{2}-\d{2}"
             value={enteredForm.enteredDate}
             onChange={(e) => {
               handleNewForm({ enteredDate: e.target.value });
@@ -78,8 +79,8 @@ const ExpenseForm: React.FC<IProps> = (props: IProps) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="reset">Cancel</button>
-        <button type="submit">Add Expense</button>
+        <button type="reset">בטל</button>
+        <button type="submit">הוסף הוצאה</button>
       </div>
     </form>
   );
